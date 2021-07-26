@@ -15,12 +15,7 @@ const renderProduct = (product) => {
             </div>`
 };
 const renderPage = list => {
-    const productsList = list.map(item => renderProduct(item));
-    console.log(productsList);
-    /* Для устранения запятых собираем содержимое массива в строку
-       при помощи распаковки (SPREAD) в список аргументов метода
-       конкатенации объекта "пустая строка". */
-    document.querySelector('.products').innerHTML = ''.concat(...productsList);
+    document.querySelector('.products').innerHTML = list.map(item => renderProduct(item)).join('');
 };
 
 renderPage(products);
