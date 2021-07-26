@@ -47,61 +47,54 @@ class ProductItem {
 // Класс корзины товаров
 class Cart {
     constructor() {
-        this._products = {
-            items: [],
-            count: []
-        };
+        this._products = [];
     }
     render() {
-        return `<div class="cart">${_renderItems()}</div>`;
+        return `<div class="cart">
+                        ${this._products.map(cartItem => cartItem.render()).join('')}
+                    </div>`;
+    }
+    _findProductIndex(id) {
+        return _products.findIndex(element => element.product.id === id);
     }
     addProduct(product) {
         let i = _findProductIndex(product.id);
         if (i >= 0) {
             // Товар данного типа уже в корзине
-            _products.count[i]++;
+            _products[i].count++;
         } else {
             // Поступил товар нового типа
-            _products.items.push(product);
-            _products.count.push(1);
+            _products.push(new CartItem(product));
         }
     }
     deleteProduct(id) {
         let i = _findProductIndex(id);
         if (i >= 0) {
-            _products.count[i]--;
-            if (_products.count[i] === 0) {
+            _products[i].count--;
+            if (_products[i].count === 0) {
                 // Товара не осталось: удаляем позицию
-                _products.items.splice(i, 1);
-                _products.count.splice(i, 1);
+                _products.splice(i, 1);
             }
         }
     }
-    _findProductIndex(id) {
-        return _products.items.findIndex(element => element.id === id);
-    }
-    _renderItem(i) {
-        return `<div class="cart-item">
-                        ${_products.items[i].render()}
-                        <p class="cart-count">${_products.count[i]}</p>
-                    </div>`;
-    }
-    _renderItems() {
-        let s = '';
-        for (let i = 0; i < _products.items.length; i++) {
-            s += _renderItem(i);
-        }
-        return s;
-    }
     _getSumByProduct() {
-        let sums = [];
-        for (let i = 0; i < _products.items.length; i++) {
-            sums.push(_products.items[i].price * _products.count[i]);
-        }
-        return sums;
+        return this._products.map(cartItem => cartItem.price * cartItem.count);
     }
     _getSum() {
         return _getSumByProduct().reduce((finaleSum, sum) => finaleSum + sum);
+    }
+}
+
+class CartItem {
+    constructor(product, count = 1) {
+        this.product = product;
+        this.count = count;
+    }
+    render() {
+        return `<div class="cart-item">
+                        ${this.product.render()}
+                        <p class="cart-count">${this.count}</p>
+                    </div>`;
     }
 }
 
