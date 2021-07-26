@@ -23,9 +23,7 @@ class ProductList {
     }
 
     sumOfPrices() {
-        let sum = 0;
-        this.goods.forEach(product => sum += product.price);
-        return sum;
+        return this.goods.reduce((sum, product) => sum + product.price);
     }
 }
 
@@ -46,16 +44,65 @@ class ProductItem {
     }
 }
 
+// Класс корзины товаров
 class Cart {
     constructor() {
-        this._productIDs = [];
-        this._productCount = [];
+        this._products = {
+            items: [],
+            count: []
+        };
     }
-    pushProduct(product) {}
-    dropProduct(id) {}
-    getSumByProduct() {}
-    getSum() {}
-    render() {}
+    render() {
+        return `<div class="cart">${_renderItems()}</div>`;
+    }
+    addProduct(product) {
+        let i = _findProductIndex(product.id);
+        if (i >= 0) {
+            // Товар данного типа уже в корзине
+            _products.count[i]++;
+        } else {
+            // Поступил товар нового типа
+            _products.items.push(product);
+            _products.count.push(1);
+        }
+    }
+    deleteProduct(id) {
+        let i = _findProductIndex(id);
+        if (i >= 0) {
+            _products.count[i]--;
+            if (_products.count[i] === 0) {
+                // Товара не осталось: удаляем позицию
+                _products.items.splice(i, 1);
+                _products.count.splice(i, 1);
+            }
+        }
+    }
+    _findProductIndex(id) {
+        return _products.items.findIndex(element => element.id === id);
+    }
+    _renderItem(i) {
+        return `<div class="cart-item">
+                        ${_products.items[i].render()}
+                        <p class="cart-count">${_products.count[i]}</p>
+                    </div>`;
+    }
+    _renderItems() {
+        let s = '';
+        for (let i = 0; i < _products.items.length; i++) {
+            s += _renderItem(i);
+        }
+        return s;
+    }
+    _getSumByProduct() {
+        let sums = [];
+        for (let i = 0; i < _products.items.length; i++) {
+            sums.push(_products.items[i].price * _products.count[i]);
+        }
+        return sums;
+    }
+    _getSum() {
+        return _getSumByProduct().reduce((finaleSum, sum) => finaleSum + sum);
+    }
 }
 
 let list = new ProductList();
