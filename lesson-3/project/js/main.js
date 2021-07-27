@@ -11,7 +11,7 @@ class ProductList {
         return fetch(`${API}/catalogData.json`)
             .then(result => result.json())
             .catch(error => {
-                console.log(error);
+                console.error(error);
             })
             .then(data => {
                 this.goods = data.map(item => {
@@ -53,12 +53,16 @@ class ProductItem {
                 </div>
             </div>`;
     }
+    renderForCart() {
+        return `${this.title}. ID: ${this.id}. Цена: ${this.price} руб.`;
+    }
 }
 
 // Класс корзины товаров
 class Cart {
     constructor() {
         this._products = [];
+        this.amount = 0;
     }
     render() {
         return `<div class="cart">
@@ -91,8 +95,25 @@ class Cart {
     _getSumByProduct() {
         return this._products.map(cartItem => cartItem.price * cartItem.count);
     }
-    _getSum() {
-        return _getSumByProduct().reduce((finaleSum, sum) => finaleSum + sum);
+    _updateSum() {
+        this.amount = _getSumByProduct().reduce((finaleSum, sum) => finaleSum + sum);
+    }
+    fetchCart() {
+        return fetch(`${API}/getBasket.json`)
+            .then(result => result.json())
+            .catch(error => {
+                console.error(error);
+            })
+            .then(data => {
+                const { amount, countGoods, contents } = data;
+                this.amount = amount;
+                this._products = contents.map(item => {
+                    const { id_product: id, product_name: title, price, quantity: count } = item;
+                    const product = new ProductItem({ id, title, price });
+                    return new CartItem(product, count);
+                });
+                return this.render();
+            });
     }
 }
 
@@ -102,11 +123,18 @@ class CartItem {
         this.count = count;
     }
     render() {
-        return `<div class="cart-item">
-                        ${this.product.render()}
-                        <p class="cart-count">${this.count}</p>
-                    </div>`;
+        return `<p class="cart-item">
+                        ${this.product.renderForCart()}
+                        В корзине ${this.count} шт.
+                    </p>`;
     }
 }
 
 let list = new ProductList();
+let cart = new Cart();
+document.querySelector('button.btn-cart').addEventListener('click', () => {
+    cart.fetchCart()
+        .then(str => {
+            document.querySelector('main').insertAdjacentHTML('beforeend', str);
+        });
+});
