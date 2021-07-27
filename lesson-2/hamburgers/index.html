@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <script defer src="js/compute.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гамбургеры</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <form class="form" onsubmit="return false;">
+        <div class="form-string form-string-header">
+            <h2>Заказ бургера</h2>
+        </div>
+        <div class="form-string">
+            <label>Размер бургера: </label>
+            <select name="burger" id="burger">
+                <option value="small">Маленький</option>
+                <option value="big">Большой</option>
+            </select>
+        </div>
+        <div class="form-string">
+            <label>Начинка: </label>
+            <select name="filling" id="filling">
+                <option value="cheese">Сыр</option>
+                <option value="lettuce">Салат</option>
+                <option value="potatoes">Картофель</option>
+            </select>
+        </div>
+        <div class="form-string">
+            <label>Дополнительно: </label>
+            <select name="addition" id="addition">
+                <option value="none"></option>
+                <option value="spice">Приправа</option>
+                <option value="mayonnaise">Майонез</option>
+            </select>
+        </div>
+        <div class="form-string form-string_center form-string-last">
+            <button type="submit" id="submit-btn" onclick="new Burger();">Заказать</button>
+        </div>
+    </form>
+    <div class="results">
+        <p>Цена: <span id="sum" class="results-sum">0</span> руб. Калорийность: <span id="cal" class="results-cal">0</span> ккал</p>
+    </div>
+</body>
+
+</html>

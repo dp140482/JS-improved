@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+body {
+    font: 14px/21px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 500px;
+}
+
+.form {
+    font: 13pt Georgia, Times, "Times New Roman", serif;
+    min-width: 500px;
+    max-width: 700px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.form select {
+    width: 150px;
+    height: 25px;
+}
+
+.form button {
+    padding: 7px 15px;
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+
+.form button:hover {
+    background-color: gray;
+    color: white;
+}
+
+.form-string {
+    padding: 12px;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-string-header {
+    border-bottom: 2px solid gray;
+}
+
+.form-string-last {
+    border-top: 1px solid gray;
+    border-bottom: none;
+}
+
+.form-string_center {
+    display: flex;
+    justify-content: center;
+}
+
+.results {
+    min-width: 500px;
+    max-width: 700px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+    font-size: 13pt;
+}
+
+.results p {
+    padding: 12px;
+}
+
+.results-sum {
+    font-weight: bold;
+}
+
+.results-cal {
+    font-weight: bold;
+    color: red;
+}
