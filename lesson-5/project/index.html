@@ -20,8 +20,21 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <button class="btn-cart" type="button">Корзина</button>
-            <div class="cart-block invisible"></div>
+            <button class="btn-cart" type="button" @click="showCart = ! showCart">Корзина</button>
+            <div class="cart-block" v-show="showCart">
+                <div class="cart-item" v-for="item of cart">
+                    <img :src="cartImg" alt="Фото товара в корзине">
+                    <div class="cart-item-desc">
+                        <h3>{{item.product_name}}</h3>
+                        <p>{{item.quantity}} шт.</p>
+                        <p>${{item.price * item.quantity}}</p>
+                    </div>
+                    <div class="right-block">
+
+                        <button class="del-btn">&times;</button>
+                    </div>
+                </div>
+            </div>
         </header>
         <main>
             <div class="products">
@@ -29,8 +42,8 @@
                     <img :src="img" alt="Фото товара">
                     <div class="desc">
                         <h3>{{product.product_name}}</h3>
-                        <p>{{product.price}} $</p>
-                        <button class="buy-btn">Купить</button>
+                        <p>${{product.price}}</p>
+                        <button class="buy-btn" @click="buy(product)">Купить</button>
                     </div>
                 </div>
             </div>
