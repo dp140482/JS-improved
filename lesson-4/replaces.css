@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Calibri", "Arial", sans-serif;
+    font-size: 13pt;
+    margin: 25px;
+    max-width: 1000px;
+}
+
+.text {
+    font-family: monospace;
+    color: #1f1f1f;
+    padding: 25px 0;
+}
+
+.author {
+    font-weight: 500;
+    padding-bottom: 5px;
+}
+
+code {
+    color: red;
+    font-weight: bold;
+}
+
+code::before {
+    content: '«';
+    color: black;
+}
+
+code::after {
+    content: '»';
+    color: black;
+}
+
+.comment {
+    padding-left: 18px;
+}
