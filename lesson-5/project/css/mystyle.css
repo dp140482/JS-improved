@@ -1,0 +1,12 @@
+main {
+    position: relative;
+}
+
+.cart {
+    position: absolute;
+    top: -60px;
+    right: 200px;
+    background: white;
+    padding: 5px;
+    border: 1px solid gray;
+}

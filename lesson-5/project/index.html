@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">E-shop</div>
+            <form action="#" class="search-form">
+                <input type="text" class="search-field" v-model="userSearch" @input="onInput">
+                <button class="btn-search" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <button class="btn-cart" type="button" @click="showCart = ! showCart">Корзина</button>
+            <div class="cart-block" v-show="showCart">
+                <div class="cart-item" v-for="item of cart">
+                    <img :src="cartImg" alt="Фото товара в корзине">
+                    <div class="cart-item-desc">
+                        <h3>{{item.product_name}}</h3>
+                        <p>{{item.quantity}} шт.</p>
+                        <p>${{item.price * item.quantity}}</p>
+                    </div>
+                    <div class="right-block">
+
+                        <button class="del-btn">&times;</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="products">
+                <div class="product-item" v-for="product of filtered">
+                    <img :src="img" alt="Фото товара">
+                    <div class="desc">
+                        <h3>{{product.product_name}}</h3>
+                        <p>${{product.price}}</p>
+                        <button class="buy-btn" @click="buy(product)">Купить</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="js/mainvue.js"></script>
+</body>
+
+</html>
