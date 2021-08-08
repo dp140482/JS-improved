@@ -14,12 +14,7 @@
     <div id="app">
         <header>
             <div class="logo">E-shop</div>
-            <form action="#" class="search-form">
-                <input type="text" class="search-field" v-model="userSearch" @input="onInput">
-                <button class="btn-search" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
+            <search></search>
             <button class="btn-cart" type="button" @click="showCart = ! showCart">Корзина</button>
             <div class="cart-block" v-show="showCart">
                 <div class="cart-item" v-for="item of cart">
@@ -30,7 +25,6 @@
                         <p>${{item.price * item.quantity}}</p>
                     </div>
                     <div class="right-block">
-
                         <button class="del-btn">&times;</button>
                     </div>
                 </div>
@@ -50,6 +44,7 @@
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="js/search.js"></script>
     <script src="js/mainvue.js"></script>
 </body>
 

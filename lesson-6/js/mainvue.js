@@ -8,7 +8,6 @@ const app = new Vue({
         img: 'https://via.placeholder.com/200x150',
         cartImg: 'https://via.placeholder.com/50x100',
         products: [],
-        userSearch: '',
         filtered: [],
         cart: [],
         showCart: false
@@ -20,13 +19,6 @@ const app = new Vue({
                 .catch(error => {
                     console.log(error);
                 })
-        },
-        onInput() {
-            if (this.userSearch === '') {
-                this.filtered = this.products;
-            } else {
-                this.filtered = this.products.filter(product => new RegExp(this.userSearch, 'i').test(product.product_name));
-            }
         },
         buy(product) {
             let item = cart.find(element => element.product_id === id);
