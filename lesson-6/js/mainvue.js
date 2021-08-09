@@ -21,11 +21,18 @@ const app = new Vue({
                 })
         },
         buy(product) {
-            let item = cart.find(element => element.product_id === id);
+            let item = this.cart.find(element => element.id_product === product.id_product);
             if (item) {
-                cart.push(Object.assign({ quantity: 1 }, product));
-            } else {
                 item.quantity++;
+            } else {
+                this.cart.push(Object.assign({ quantity: 1 }, product));
+            }
+        },
+        remove(product) {
+            if (product.quantity > 1) {
+                product.quantity--;
+            } else {
+                this.cart.splice(this.cart.indexOf(product), 1);
             }
         }
     },
