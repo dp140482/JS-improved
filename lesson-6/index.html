@@ -21,6 +21,7 @@
             </div>
         </header>
         <main>
+            <error :status="errorFlag"></error>
             <products :products="filtered" :img="img" @buy="buy"></products>
         </main>
     </div>
@@ -28,6 +29,7 @@
     <script src="js/search.js"></script>
     <script src="js/catalog-components.js"></script>
     <script src="js/cart-components.js"></script>
+    <script src="js/error-component.js"></script>
     <script src="js/mainvue.js"></script>
 </body>
 

@@ -19,3 +19,11 @@
     margin-left: 15px;
     font-size: 0.9em;
 }
+
+.error-block {
+    margin-top: 20px;
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+}

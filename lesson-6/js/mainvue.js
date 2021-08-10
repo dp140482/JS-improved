@@ -10,7 +10,8 @@ const app = new Vue({
         products: [],
         filtered: [],
         cart: [],
-        showCart: false
+        showCart: false,
+        errorFlag: false
     },
     methods: {
         getJson(url) {
@@ -43,12 +44,14 @@ const app = new Vue({
                     this.products.push(el);
                 }
                 this.filtered = this.products;
-            });
+            })
+            .catch(error => { this.errorFlag = true; });
         this.getJson(API + this.basketUrl)
             .then(data => {
                 for (let el of data.contents) {
                     this.cart.push(el);
                 }
-            });
+            })
+            .catch(error => { this.errorFlag = true; });
     }
 });
