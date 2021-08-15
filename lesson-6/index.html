@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">E-shop</div>
+            <div class="header-right">
+                <search></search>
+                <button class="btn-cart" type="button" @click="showCart = ! showCart">Корзина</button>
+                <cart :cart-items="cart" :img="cartImg" :visibility="showCart" @remove="remove"></cart>
+            </div>
+        </header>
+        <main>
+            <error :status="errorFlag"></error>
+            <products :products="filtered" :img="img" @buy="buy"></products>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="js/search.js"></script>
+    <script src="js/catalog-components.js"></script>
+    <script src="js/cart-components.js"></script>
+    <script src="js/error-component.js"></script>
+    <script src="js/mainvue.js"></script>
+</body>
+
+</html>

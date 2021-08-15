@@ -1,0 +1,29 @@
+.cart {
+    position: absolute;
+    top: -60px;
+    right: 200px;
+    background: white;
+    padding: 5px;
+    border: 1px solid gray;
+}
+
+.header-right {
+    position: relative;
+}
+
+.product-title {
+    margin: 5px 0;
+}
+
+.product-price {
+    margin-left: 15px;
+    font-size: 0.9em;
+}
+
+.error-block {
+    margin-top: 20px;
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+}
