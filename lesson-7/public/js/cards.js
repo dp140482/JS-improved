@@ -55,7 +55,14 @@ Vue.component('card', {
     `,
     methods: {
         buy(product) {
-            this.$root.$refs.cart.goodsNum++;
+            this.$root.$refs.cart.countGoods++;
+            this.$root.$refs.cart.amount += product.price;
+            let item = this.$root.$refs.cart.goods.find(element => element.id === product.id);
+            if (item) {
+                item.quantity++;
+            } else {
+                this.$root.$refs.cart.goods.push(Object.assign({ quantity: 1 }, product));
+            }
         }
     },
     mounted() {
