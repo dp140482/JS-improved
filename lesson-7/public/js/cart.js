@@ -28,23 +28,26 @@ Vue.component('cart-window', {
 
 Vue.component('cart-item', {
     props: ['cartItem'],
-    data() {
-        return {
-            imgSrc: ''
+    methods: {
+        deleteProduct(product) {
+            this.$root.$refs.cart.amount -= product.price;
+            this.$root.$refs.cart.countGoods--;
+            if (product.quantity > 1) {
+                product.quantity--;
+            } else {
+                this.$root.$refs.cart.goods.splice(this.$root.$refs.cart.goods.indexOf(product), 1);
+            }
         }
-    },
-    mounted() {
-        this.imgSrc = `img/pic${ this.$props.cartItem.id }.jpeg`;
     },
     template: `
     <div class="cart-item">
-        <img :src="imgSrc" class="cart-img" :alt="cartItem.description">
+        <img :src="cartItem.imgPath" class="cart-img" :alt="cartItem.description">
         <div class="cart-item-desc">
             <h3 class="product-title">{{ cartItem.name }}</h3>
             <p class="product-single-price">\${{ cartItem.price }} за шт.</p>
         </div>
         <div class="right-block">
-            <button class="del-btn">&times;</button>
+            <button class="del-btn" @click.prevent = "deleteProduct(cartItem)">&times;</button>
             <p class="product-price">\${{ cartItem.quantity * cartItem.price }}</p>
         </div>
     </div>

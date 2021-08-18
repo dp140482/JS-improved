@@ -15,7 +15,7 @@ Vue.component('cards', {
             .catch(error => { console.log(error); })
             .then(data => {
                 for (let item of data) {
-                    this.$data.products.push(item);
+                    this.$data.products.push(Object.assign({ imgPath: `img/pic${item.id}.jpeg` }, item));
                 }
             })
             .catch(error => { console.log(error); });
@@ -29,16 +29,10 @@ Vue.component('cards', {
 
 Vue.component('card', {
     props: ['product'],
-    data() {
-        return {
-            imgSrc: '',
-            imgAlt: ''
-        }
-    },
     template: `
             <div class="card-block">
                 <a href="product.html" class="card">
-                    <img :src="imgSrc" :alt="imgAlt" class="card-pic">
+                    <img :src="product.imgPath" :alt="product.imgPath" class="card-pic">
                     <div class="text-box">
                         <p class="card-header">{{ product.name }}</p>
                         <p class="card-text">{{ product.description }}</p>
@@ -64,9 +58,5 @@ Vue.component('card', {
                 this.$root.$refs.cart.goods.push(Object.assign({ quantity: 1 }, product));
             }
         }
-    },
-    mounted() {
-        this.imgAlt = `pic${ this.product.id }`;
-        this.imgSrc = `img/pic${ this.product.id }.jpeg`;
     }
 });
