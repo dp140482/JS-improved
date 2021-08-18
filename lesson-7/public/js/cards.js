@@ -5,7 +5,7 @@ Vue.component('cards', {
         }
     },
     mounted() {
-        this.$parent.getJson('http://localhost:3000/api/products')
+        this.$root.getJson('http://localhost:3000/api/products')
             .then(data => {
                 for (let item of data) {
                     this.$data.products.push(Object.assign({ imgPath: `img/pic${item.id}.jpeg` }, item));
@@ -41,17 +41,6 @@ Vue.component('card', {
             </div>
     `,
     methods: {
-        putJson(url, data) {
-            return fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(result => result.json())
-                .catch(error => { console.log(error) });
-        },
         postJson(url, data) {
             return fetch(url, {
                     method: 'POST',
@@ -68,10 +57,10 @@ Vue.component('card', {
             this.$root.$refs.cart.amount += product.price;
             let item = this.$root.$refs.cart.goods.find(element => element.id === product.id);
             if (item) {
-                this.putJson(`http://localhost:3000/api/cart/${item.id}`, { quantity: 1 })
+                this.$root.putJson(`http://localhost:3000/api/cart/${item.id}`, { quantity: 1 })
                     .then(data => {
                         if (data.result === 1) {
-                            item.quantity++
+                            item.quantity++;
                         }
                     })
                     .catch(error => { console.log(error) });

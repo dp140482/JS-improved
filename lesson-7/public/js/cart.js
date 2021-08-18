@@ -8,7 +8,7 @@ Vue.component('cart', {
         }
     },
     mounted() {
-        this.$parent.getJson('http://localhost:3000/api/cart')
+        this.$root.getJson('http://localhost:3000/api/cart')
             .then(data => {
                 this.amount = data.amount;
                 this.countGoods = data.countGoods;
@@ -39,13 +39,33 @@ Vue.component('cart-window', {
 Vue.component('cart-item', {
     props: ['cartItem'],
     methods: {
+        removeJson(url, data) {
+            return fetch(url, {
+                    method: 'DELETE',
+                    body: JSON.stringify(data)
+                })
+                .then(result => result.json())
+                .catch(error => { console.log(error) });
+        },
         deleteProduct(product) {
             this.$root.$refs.cart.amount -= product.price;
             this.$root.$refs.cart.countGoods--;
             if (product.quantity > 1) {
-                product.quantity--;
+                let item = this.$root.$refs.cart.goods.find(element => element.id === product.id);
+                this.$root.putJson(`http://localhost:3000/api/cart/${item.id}`, { quantity: -1 })
+                    .then(data => {
+                        if (data.result === 1) {
+                            item.quantity--;
+                        }
+                    })
+                    .catch(error => { console.log(error) });
             } else {
-                this.$root.$refs.cart.goods.splice(this.$root.$refs.cart.goods.indexOf(product), 1);
+                this.removeJson(`http://localhost:3000/api/cart/${product.id}`)
+                    .then(data => {
+                        if (data.result === 1) {
+                            this.$root.$refs.cart.goods.splice(this.$root.$refs.cart.goods.indexOf(product), 1);
+                        }
+                    });
             }
         }
     },

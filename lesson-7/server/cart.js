@@ -11,9 +11,17 @@ let change = (cart, req) => {
     cart.amount += req.body.quantity * find.price;
     return JSON.stringify(cart, null, 4);
 };
+let remove = (cart, req) => {
+    let find = cart.contents.find(el => el.id === +req.params.id);
+    cart.amount -= find.price;
+    cart.contents.splice(cart.contents.indexOf(find), 1);
+    cart.countGoods--;
+    return JSON.stringify(cart, null, 4);
+};
 
 
 module.exports = {
     add,
-    change
+    change,
+    remove
 };
