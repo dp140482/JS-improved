@@ -2,10 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const fs = require('fs');
+const cart = require('./cartRouter');
 
 app.use(cors());
 app.use(express.json());
 app.use('/', express.static('public'));
+app.use('/api/cart', cart);
 
 app.get('/api/products', (req, res) => {
     fs.readFile('db/products.json', 'utf-8', (err, data) => {

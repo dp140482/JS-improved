@@ -5,14 +5,7 @@ Vue.component('cards', {
         }
     },
     mounted() {
-        let opts = {
-            headers: {
-                'mode': 'no-cors'
-            }
-        }
-        fetch('http://localhost:3000/api/products', opts)
-            .then(result => result.json())
-            .catch(error => { console.log(error); })
+        this.$parent.getJson('http://localhost:3000/api/products')
             .then(data => {
                 for (let item of data) {
                     this.$data.products.push(Object.assign({ imgPath: `img/pic${item.id}.jpeg` }, item));
@@ -48,14 +41,48 @@ Vue.component('card', {
             </div>
     `,
     methods: {
+        putJson(url, data) {
+            return fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(result => result.json())
+                .catch(error => { console.log(error) });
+        },
+        postJson(url, data) {
+            return fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(result => result.json())
+                .catch(error => { console.log(error) });
+        },
         buy(product) {
             this.$root.$refs.cart.countGoods++;
             this.$root.$refs.cart.amount += product.price;
             let item = this.$root.$refs.cart.goods.find(element => element.id === product.id);
             if (item) {
-                item.quantity++;
+                this.putJson(`http://localhost:3000/api/cart/${item.id}`, { quantity: 1 })
+                    .then(data => {
+                        if (data.result === 1) {
+                            item.quantity++
+                        }
+                    })
+                    .catch(error => { console.log(error) });
             } else {
-                this.$root.$refs.cart.goods.push(Object.assign({ quantity: 1 }, product));
+                let cartProduct = Object.assign({ quantity: 1 }, product);
+                this.postJson(`http://localhost:3000/api/cart`, cartProduct)
+                    .then(data => {
+                        if (data.result === 1) {
+                            this.$root.$refs.cart.goods.push(cartProduct);
+                        }
+                    })
             }
         }
     }

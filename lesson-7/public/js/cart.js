@@ -7,6 +7,16 @@ Vue.component('cart', {
             goods: []
         }
     },
+    mounted() {
+        this.$parent.getJson('http://localhost:3000/api/cart')
+            .then(data => {
+                this.amount = data.amount;
+                this.countGoods = data.countGoods;
+                for (let item of data.contents) {
+                    this.goods.push(item);
+                }
+            });
+    },
     template: `
     <div class="cart scalable" @click="show = !show">
         <img src="img/cart.svg" alt="cart" class="no-phone no-phone_pic">
@@ -44,7 +54,7 @@ Vue.component('cart-item', {
         <img :src="cartItem.imgPath" class="cart-img" :alt="cartItem.description">
         <div class="cart-item-desc">
             <h3 class="product-title">{{ cartItem.name }}</h3>
-            <p class="product-single-price">\${{ cartItem.price }} за шт.</p>
+            <p class="product-single-price">Price: \${{ cartItem.price }}. Quantity: {{ cartItem.quantity }}.</p>
         </div>
         <div class="right-block">
             <button class="del-btn" @click.prevent = "deleteProduct(cartItem)">&times;</button>
