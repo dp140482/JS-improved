@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Brand</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900">
+    <link rel="stylesheet" href="styles/mainpage.css">
+    <link rel="stylesheet" href="styles/modif.css">
+    <script src="https://kit.fontawesome.com/a067714524.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="top-bkg">
+                <div class="growstopper">
+                    <div class="top-menu">
+                        <div class="leftpart">
+                            <a href="index.html"><img src="img/logo.png" alt="logo" class="logopic scalable"></a>
+                            <search></search>
+                        </div>
+                        <div class="rightpart">
+                            <img src="img/menu-btn-pic.svg " alt="menu-btn-pic" class="desktop_mod scalable" onclick="openMenu()">
+                            <a href="registration.html"><img src="img/people.svg " alt="people" class="no-phone no-phone_pic desktop_mod scalable"></a>
+                            <cart ref="cart"></cart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-bkg menu-anchor">
+                <div class="growstopper">
+                    <div class="header">
+                        <a href="index.html" class="header-link">
+                            <div class="header__text">
+                                <h1 class="site-header">The Brand</h1>
+                                <div class="site-subheader">of luxerious
+                                    <span class="site-subheader__span">fashion</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <nav class="menu-off" id="mainMenu">
+                    <div class="close-btn-container">
+                        <img src="img/close-btn-face.svg" alt="Close menu" class="close-btn" onclick="closeMenu()">
+                    </div>
+                    <h2 class="menu-main-header">menu</h2>
+                    <h3 class="menu-header">man</h3>
+                    <div class="submenu">
+                        <a href="#" class="menu-elem">Accessories</a>
+                        <a href="#" class="menu-elem">Bags</a>
+                        <a href="#" class="menu-elem">Denim</a>
+                        <a href="#" class="menu-elem">T-Shirts</a>
+                    </div>
+                    <h3 class="menu-header">woman</h3>
+                    <div class="submenu">
+                        <a href="#" class="menu-elem">Accessories</a>
+                        <a href="#" class="menu-elem">Jackets & Coats</a>
+                        <a href="#" class="menu-elem">Polos</a>
+                        <a href="#" class="menu-elem">T-Shirts</a>
+                        <a href="#" class="menu-elem">Shirts</a>
+                    </div>
+                    <h3 class="menu-header">kids</h3>
+                    <div class="submenu">
+                        <a href="#" class="menu-elem">Accessories</a>
+                        <a href="#" class="menu-elem">Jackets & Coats</a>
+                        <a href="#" class="menu-elem">Polos</a>
+                        <a href="#" class="menu-elem">T-Shirts</a>
+                        <a href="#" class="menu-elem">Shirts</a>
+                        <a href="#" class="menu-elem">Bags</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <div class="growstopper">
+            <div class="prop">
+                <div class="prop-item">
+                    <div class="prop-card bkg-woman">
+                        <a href="#">
+                            <div class="prop-item-text">
+                                <div class="prop-item-text-uppart">30% off</div>
+                                <div class="prop-item-text-downpart">for women</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="prop-item">
+                    <div class="prop-card bkg-man">
+                        <a href="#">
+                            <div class="prop-item-text">
+                                <div class="prop-item-text-uppart">hot deal</div>
+                                <div class="prop-item-text-downpart">for men</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="prop-item">
+                    <div class="prop-card bkg-kid">
+                        <a href="#">
+                            <div class="prop-item-text">
+                                <div class="prop-item-text-uppart">new arrivals</div>
+                                <div class="prop-item-text-downpart">for kids</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="prop-item prop-item_longcard">
+                    <div class="prop-longcard bkg-categories">
+                        <a href="#">
+                            <div class="prop-item-text">
+                                <div class="prop-item-text-uppart">luxirous & trendy</div>
+                                <div class="prop-item-text-downpart">accesories</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="growstopper">
+            <div class="featured-items-header">
+                <h2 class="featured-items-header__header">Fetured Items</h2>
+                <p class="featured-items-header__text">Shop for items based on what we featured in this week</p>
+            </div>
+            <error ref="error"></error>
+            <cards ref="cards"></cards>
+            <div class="browse-button">
+                <a href="catalog.html">
+                    <div class="browse-btn">Browse All Product</div>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="upfooter-bkg">
+                <div class="growstopper">
+                    <div class="upfooter">
+                        <a href="#" class="upfooter-link">
+                            <div class="upfooter-item">
+                                <img src="img/delivery.svg" alt="delivery" class="upfooter-item-img">
+                                <div class="upfooter-item-header">Free Delivery</div>
+                                <div class="upfooter-item-text">Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</div>
+                            </div>
+                        </a>
+                        <a href="#" class="upfooter-link">
+                            <div class="upfooter-item">
+                                <img src="img/discounts.svg" alt="discounts" class="upfooter-item-img">
+                                <div class="upfooter-item-header second-item-header">Sales & discounts</div>
+                                <div class="upfooter-item-text">Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</div>
+                            </div>
+                        </a>
+                        <a href="#" class="upfooter-link">
+                            <div class="upfooter-item">
+                                <img src="img/crown.svg" alt="crown" class="upfooter-item-img">
+                                <div class="upfooter-item-header third-item-header">Quality assurance</div>
+                                <div class="upfooter-item-text">Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="midfootersec_bkg">
+                <div class="megastopper">
+                    <div class="midfooter-container">
+                        <div class="midfooter growstopper">
+                            <figure class="midfooter-topcontainer">
+                                <img src="img/footerphoto.png" alt="footerphoto" class="midfooter-img">
+                                <figcaption class="midfooter-subpictext">“Vestibulum quis porttitor dui! Quisque viverra nunc mi, <em>a pulvinar purus condimentum</em>“</figcaption>
+                            </figure>
+                            <form action="#" class="midfooter-form">
+                                <div class="form-header">subscribe</div>
+                                <div class="form-subheader">for our newletter and promotion</div>
+                                <input type="email" class="form-input" placeholder="Enter Your Email">
+                                <input type="submit" value="Subscribe" class="form-subscribe">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="downfooter-bkg">
+                <div class="growstopper">
+                    <div class="downfooter">
+                        <div class="socials">
+                            <a href="https://www.facebook.com">
+                                <div class="social-item">
+                                    <i class="fab fa-facebook-f icon_pic"></i>
+                                </div>
+                            </a>
+                            <a href="https://www.instagram.com">
+                                <div class="social-item">
+                                    <i class="fab fa-instagram icon_pic"></i>
+                                </div>
+                            </a>
+                            <a href="https://www.pinterest.ru">
+                                <div class="social-item">
+                                    <i class="fab fa-pinterest-p icon_pic"></i>
+                                </div>
+                            </a>
+                            <a href="https://twitter.com">
+                                <div class="social-item">
+                                    <i class="fab fa-twitter icon_pic"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="copyright">
+                            &copy; 2021 Brand All Rights Reserved.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function openMenu() {
+            document.getElementById("mainMenu").className = "menu-on";
+        }
+
+        function closeMenu() {
+            document.getElementById("mainMenu").className = "menu-off";
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="./build.js"></script>
+</body>
+
+</html>
