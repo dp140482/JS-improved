@@ -1,7 +1,8 @@
 Vue.component('cards', {
     data() {
         return {
-            products: []
+            products: [],
+            filtered: []
         }
     },
     mounted() {
@@ -10,12 +11,13 @@ Vue.component('cards', {
                 for (let item of data) {
                     this.$data.products.push(Object.assign({ imgPath: `img/pic${item.id}.jpeg` }, item));
                 }
+                this.$data.filtered = this.$data.products;
             })
             .catch(error => { this.$root.$refs.error.text = 'Connection failed'; });
     },
     template: `
         <div class="featured-items">
-            <card v-for="product of products" :product="product"></card>
+            <card v-for="product of filtered" :product="product"></card>
         </div>
     `
 });

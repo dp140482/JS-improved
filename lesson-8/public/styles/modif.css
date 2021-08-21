@@ -102,3 +102,27 @@
     font-size: 19pt;
     line-height: 80%;
 }
+
+.search-form {
+    margin: 18px 41px;
+}
+
+.mgpic {
+    margin: 0;
+}
+
+.search-field {
+    background: #222;
+    border-top: none;
+    border-left: none;
+    border-bottom: 2px solid white;
+    border-right: none;
+    color: white;
+    font-size: 13pt;
+}
+
+.btn-search {
+    background: #222;
+    border: none;
+    cursor: pointer;
+}

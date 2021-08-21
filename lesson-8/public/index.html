@@ -20,7 +20,7 @@
                     <div class="top-menu">
                         <div class="leftpart">
                             <a href="index.html"><img src="img/logo.png" alt="logo" class="logopic scalable"></a>
-                            <img src="img/mglass.svg " alt="mglass" class="mgpic scalable">
+                            <search></search>
                         </div>
                         <div class="rightpart">
                             <img src="img/menu-btn-pic.svg " alt="menu-btn-pic" class="desktop_mod scalable" onclick="openMenu()">
@@ -30,6 +30,8 @@
                     </div>
                 </div>
             </div>
+
+            <!--
             <div class="header-bkg menu-anchor">
                 <div class="growstopper">
                     <div class="header">
@@ -74,8 +76,10 @@
                     </div>
                 </nav>
             </div>
+            -->
         </header>
 
+        <!--
         <div class="growstopper">
             <div class="prop">
                 <div class="prop-item">
@@ -119,7 +123,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
+        -->
 
         <section class="growstopper">
             <div class="featured-items-header">
@@ -127,7 +132,7 @@
                 <p class="featured-items-header__text">Shop for items based on what we featured in this week</p>
             </div>
             <error ref="error"></error>
-            <cards></cards>
+            <cards ref="cards"></cards>
             <div class="browse-button">
                 <a href="catalog.html">
                     <div class="browse-btn">Browse All Product</div>
@@ -225,6 +230,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <script src="js/cards.js"></script>
+    <script src="js/search.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/ErrorComp.js"></script>
     <script src="js/main.js"></script>
